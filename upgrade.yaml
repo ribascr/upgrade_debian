@@ -1,0 +1,17 @@
+---
+- name: Atualizar pacotes do sistema
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Atualizar cache do APT
+      apt:
+        update_cache: yes
+
+    - name: Atualizar pacotes instalados
+      apt:
+        upgrade: yes
+        
+    - name: Limpar pacotes antigos do cache (autoclean)
+      apt:
+        autoclean: yes
